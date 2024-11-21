@@ -1,0 +1,30 @@
+database:
+  url: jdbc:postgresql://dpg-csvc8vm8ii6s73eqolp0-a.oregon-postgres.render.com:5432/iset_2yp6
+  us: iset
+  ps: r8nHA6iBr1rjeh3RB0H9KjnKKrrgUuI0
+
+spring:
+  application:
+    name: mallapi
+  datasource:
+    url: ${database.url}
+    username: ${database.us}
+    password: ${database.ps}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 4
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  # file
+# file 하나의 최대 크기를 10MB로 제한하고 한 번에 전송하는 데이터는 30MB로 제한
+  servlet:
+    multipart:
+      max-request-size: 30MB
+      max-file-size: 10MB
+
+  
